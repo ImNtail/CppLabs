@@ -7,5 +7,5 @@
 
 int main()
 {
-    return 10;
+	std::cout << "Hello SUKA\n";
 }
