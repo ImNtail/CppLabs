@@ -2,21 +2,18 @@
 //
 
 #include "stdafx.h"
-#include "iostream"
-#include <cstdlib>
-
 
 int main()
 {
-	std::cout << "Hello SUKA\n";
-	int array1[15];
-	for (int i = 0; i < 15; i++)
+	const size_t n = 15;
+	int a[n];
+	for (int i = 0; i < n; i++)
 	{
-		array1[i] = 1;
-		std::cout << array1[i]<<" ";
+		a[i] = 1;
+		printf("%d\n", a[i]);
 	}
-	system("pause");
 }
+
 void processArray()
 {
 
