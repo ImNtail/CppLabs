@@ -5,19 +5,29 @@
 #include "iostream"
 #include <cstdlib>
 
+void processArray(int a[15])
+{
+	for (int i = 0; i < 15; i++)
+	{
+		if (i % 2 == 0)
+		{
+			a[i] = a[i] * -1;
+		}
+		std::cout << a[i] << " ";
+	}
+}
 
 int main()
 {
-	std::cout << "Hello SUKA\n";
-	int array1[15];
+	
+	int a[15];
 	for (int i = 0; i < 15; i++)
 	{
-		array1[i] = 1;
-		std::cout << array1[i]<<" ";
+		a[i] = rand()%11;
+		std::cout << a[i]<<" ";
 	}
-	system("pause");
-}
-void processArray()
-{
+  
+	processArray(a);
 
+	system("pause");
 }
