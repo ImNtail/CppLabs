@@ -19,15 +19,11 @@ void processArray(int a[15])
 
 int main()
 {
-	
-	int a[15];
-	for (int i = 0; i < 15; i++)
+	const size_t n = 15;
+	int a[n];
+	for (int i = 0; i < n; i++)
 	{
-		a[i] = rand()%11;
-		std::cout << a[i]<<" ";
+		a[i] = 1;
+		printf("%d\n", a[i]);
 	}
-  
-	processArray(a);
-
-	system("pause");
 }
