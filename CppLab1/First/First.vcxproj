@@ -19,11 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{84397302-ACF9-41A8-B3FA-DDE7C8661CD1}</ProjectGuid>
+    <ProjectGuid>{504B6D93-F807-45BE-B8AE-B7401A858B27}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>CppLab1</RootNamespace>
+    <RootNamespace>First</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>First</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
