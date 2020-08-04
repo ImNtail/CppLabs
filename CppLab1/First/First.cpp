@@ -4,26 +4,37 @@
 #include "stdafx.h"
 #include "iostream"
 #include <cstdlib>
+#include<ctime>
 
-void processArray(int a[15])
+void processArray(int ar[15] , int n, int a, int b)
 {
-	for (int i = 0; i < 15; i++)
+	srand(time(NULL));
+	for (int i = 0; i < n; i++)
 	{
-		if (i % 2 == 0)
+	
+		if (i%2 ==0)
 		{
-			a[i] = a[i] * -1;
+			ar[i] = ar[i] * rand()/((a + b)*1000);
+			printf("%d\n", ar[i]);
 		}
-		std::cout << a[i] << " ";
 	}
 }
 
 int main()
 {
 	const size_t n = 15;
-	int a[n];
+	int ar[n];
+	int a;
+	int b;
+	printf("\nEnter - a & b\n");
+	std::cin >> a>>b;
+	printf("\nArray start\n");
 	for (int i = 0; i < n; i++)
 	{
-		a[i] = 1;
-		printf("%d\n", a[i]);
+		ar[i] = 1;
+		printf("%d\n", ar[i]);
 	}
+	printf("\nArray error \n");
+	processArray(ar, n, a, b);
+	system("pause");
 }
