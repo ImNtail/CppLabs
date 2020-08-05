@@ -1,40 +1,42 @@
 // First.cpp : Defines the entry point for the console application.
 //
 
+#define _CRT_SECURE_NO_WARNINGS
 #include "stdafx.h"
-#include "iostream"
 #include <cstdlib>
-#include<ctime>
+#include <ctime>
 
-void processArray(int ar[15] , int n, int a, int b)
+void processArray(int arr[], int n, int a, int b)
 {
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
+	int i = 0, cnt = 0;
+	while (i < n)
+	{
+		arr[i] = arr[i] * ((rand() % (b-a+1)) + a);
+		if (arr[i] < 0)
+			cnt++; //считаем кол-во отрицательных (как раз будет размером массива)
+		i+=2;
+	}
+
+	int newArr[cnt]; //чтобы создать массив, нужно указать размер в виде константы. надо придумать, как int cnt перевести в const int
+
+	printf("\nArray:\n");
 	for (int i = 0; i < n; i++)
 	{
-	
-		if (i%2 ==0)
-		{
-			ar[i] = ar[i] * rand()/((a + b)*1000);
-			printf("%d\n", ar[i]);
-		}
+		printf("%d\n", arr[i]);
 	}
 }
 
 int main()
 {
-	const size_t n = 15;
-	int ar[n];
-	int a;
-	int b;
-	printf("\nEnter - a & b\n");
-	std::cin >> a>>b;
-	printf("\nArray start\n");
-	for (int i = 0; i < n; i++)
+	const int n = 15;
+	int arr[n] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+	int a = 1, b;
+	while (a > 0)
 	{
-		ar[i] = 1;
-		printf("%d\n", ar[i]);
+		printf("Enter range of randomizing ( a and b, a < 0 ): ");
+		scanf("%d %d", &a, &b);
 	}
-	printf("\nArray error \n");
-	processArray(ar, n, a, b);
-	system("pause");
+	processArray(arr, n, a, b);
+	//system("pause");
 }
