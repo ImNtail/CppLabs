@@ -61,5 +61,5 @@ int main()
 		printf("Enter range of randomizing ( a and b, a < 0 ): ");
 		scanf("%d %d", &a, &b);
 	}
-	//system("pause");
+	system("pause");
 }
