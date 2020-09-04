@@ -6,60 +6,50 @@
 #include <cstdlib>
 #include <ctime>
 
-void print(int arr[], int n)
+void print(float arr[], int n)
 {
-	printf("\nArray:\n");
+	printf("\n\nArray:\n");
 	for (int i = 0; i < n; i++)
 	{
-		printf("| %d ", arr[i]);
+		printf("| %f ", arr[i]);
 	}
 }
 
-void processArray(int arr[], int n, int a, int b)
+void processArray(float arr[], int n, float a, int b)
 {
 	srand((unsigned int)time(NULL));
-	int i = 0;
-	size_t cnt = 0;
-	while (i < n)
+	float min = 1000;
+	int pos = 0;
+	for (int i = 0; i < n; i++)
 	{
-		arr[i] = arr[i] * ((rand() % (b-a+1)) + a);
-		if (arr[i] < 0)
-			cnt++; //считаем кол-во отрицательных (как раз будет размером массива)
-		i+=2;
+		arr[i] = (float)(rand() % b - a) + a;
+		if (arr[i] < min)
+		{
+			min = arr[i];
+			pos = i;
+		}
 	}
 	print(arr, n);
 
-	int* newArr = new int[cnt];
+	for (int i = 0; i < n; i++)
+		arr[i] -= min;
 
-	for (int i = 0; i < cnt; i++)
-		newArr[i] = 0;
+	float* newArr = new float[n];
 
 	for (int i = 0; i < n; i++)
 	{
-		if (arr[i] < 0)
-		{
-			for (int j = 0; j < cnt; j++)
-			{
-				if (newArr[j] == 0)
-				{
-					newArr[j] = arr[i];
-					break;
-				}
-			}
-		}
+		if (i < pos)
+			newArr[i] = arr[i];
+		else
+			newArr[i] = min;
 	}
-	print(newArr, cnt);
+	print(newArr, n);
 }
 
 int main()
 {
 	const int n = 15;
-	int arr[n] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-	int a = 1, b;
-	while (a > 0)
-	{
-		printf("Enter range of randomizing ( a and b, a < 0 ): ");
-		scanf("%d %d", &a, &b);
-	}
-	system("pause");
+	float a = 20, b = 100;
+	float arr[n] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	processArray(arr, n, a, b);
 }
