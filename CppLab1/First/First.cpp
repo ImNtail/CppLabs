@@ -1,5 +1,3 @@
-// First.cpp : Defines the entry point for the console application.
-//
 /*
 ¬ариант 7.
 ќбъ€вить массив из n=15 вещественных чисел, проинициализировать нул€ми. ‘ункци€
@@ -16,6 +14,7 @@ processArray() должна заполнить массив случайными числами от 20.0 до 100.0, а
 #include <cstdlib>
 #include <ctime>
 
+//array printing func
 void print(float arr[], int n)
 {
 	printf("\n\nArray:\n");
@@ -30,6 +29,7 @@ void processArray(float arr[], int n, float a, float b)
 	srand((unsigned int)time(NULL));
 	float min = 1000;
 	int pos = 0;
+	//making random values of array numbers
 	for (int i = 0; i < n; i++)
 	{
 		arr[i] = ((b - a) * ((float)rand() / RAND_MAX)) + a;
@@ -40,12 +40,12 @@ void processArray(float arr[], int n, float a, float b)
 		}
 	}
 	print(arr, n);
-
+	//subtracting the minimum num from each number
 	for (int i = 0; i < n; i++)
 		arr[i] -= min;
 
 	float* newArr = new float[n];
-
+	//making new array
 	for (int i = 0; i < n; i++)
 	{
 		if (i < pos)
@@ -57,7 +57,7 @@ void processArray(float arr[], int n, float a, float b)
 	printf("Position of ");
 }
 
-int main()
+void main()
 {
 	const int n = 15;
 	float a = 20, b = 100;
