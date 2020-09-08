@@ -39,7 +39,10 @@ float processArray(float arr[], int n, float a, float b)
 	for (int i = 0; i < n; i++)
 	{
 		if (arr[i] < min)
+		{
 			min = arr[i];
+			pos = i;
+		}
 	}
 	//subtracting the minimum num from each number
 	for (int i = 0; i < n; i++)
@@ -55,7 +58,6 @@ float processArray(float arr[], int n, float a, float b)
 			newArr[i] = min;
 	}
 	print(newArr, n);
-	printf("Position of ");
 	return min;
 }
 
@@ -64,5 +66,5 @@ void main()
 	const int n = 15;
 	float a = 20, b = 100;
 	float arr[n] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	printf("%f", processArray(arr, n, a, b));
+	printf("\n\nMin num of array is %f\n", processArray(arr, n, a, b));
 }
