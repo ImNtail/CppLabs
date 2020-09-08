@@ -7,16 +7,47 @@
 */
 
 #define _CRT_SECURE_NO_WARNINGS
-#include "iostream";
+#include <iostream>
+#include <iomanip>
 
-void arrInit(int (&arr)[5][5])
+const size_t n = 5;
+
+void print(int arr[n][n])
 {
+	std::cout << std::endl;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			std::cout << arr[i][j] << "        ";
+		}
+		std::cout << std::endl;
+	}
+}
 
+int fact(int num)
+{
+	if (num == 0)
+		return 1;
+	else
+		return num * fact(num - 1);
+}
+
+void arrInit(int arr[n][n])
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			arr[i][j] = fact(i) + fact(j);
+		}
+	}
+	print(arr);
 }
 
 void main()
 {
-	const int n = 5;
 	int arr[n][n];
 	arrInit(arr);
+	system("pause");
 }
