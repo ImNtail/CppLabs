@@ -6,20 +6,32 @@
 Вывод на экран: на каждый элемент массива отвести 8 позиций.
 */
 
-#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <iomanip>
 
 const size_t n = 5;
 
-void print(int arr[n][n])
+void freeArr1D(int* arr)
 {
-	std::cout << std::endl;
+	delete[] arr;
+}
+
+void freeArr2D(int** arr)
+{
 	for (int i = 0; i < n; i++)
 	{
-		for (int j = 0; j < n; j++)
+		delete[] arr[i];
+	}
+}
+
+void print(int** arr2D, int rows, int cols)
+{
+	std::cout << std::endl;
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
 		{
-			std::cout << arr[i][j] << "        ";
+			std::cout << std::setw(8) << *(*(arr2D + i) + j);
 		}
 		std::cout << std::endl;
 	}
@@ -33,21 +45,51 @@ int fact(int num)
 		return num * fact(num - 1);
 }
 
-void arrInit(int arr[n][n])
+void arrInit(int** arr2D, int rows, int cols)
 {
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < n; j++)
+		for (int j = 0; j < cols; j++)
 		{
-			arr[i][j] = fact(i) + fact(j);
+			*(*(arr2D + i) + j) = fact(i) + fact(j);
 		}
 	}
-	print(arr);
+	print(arr2D, n, n);
+}
+
+void createNewArr(int** arr2D, int rows, int cols)
+{
+	int n = 10, rowsCnt = 1, cnt = 0;
+	int* newArr = new int[n];
+	std::cout << std::endl;
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			if (rowsCnt % 2 == 0)
+			{
+				*(newArr + cnt) = *(*(arr2D + i) + j);
+				cnt++;
+			}
+		}
+		rowsCnt++;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		std::cout << *(newArr + i) << " ";
+	}
+	freeArr1D(newArr);
 }
 
 void main()
 {
-	int arr[n][n];
-	arrInit(arr);
+	int **arr2D = new int*[n];
+	for (int i = 0; i < n; i++)
+	{
+		arr2D[i] = new int[n];
+	}
+	arrInit(arr2D, n, n);
+	createNewArr(arr2D, n, n);
+	freeArr2D(arr2D);
 	system("pause");
 }
