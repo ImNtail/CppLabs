@@ -24,7 +24,7 @@ void main()
 
 	v1.print();
 
-
+	v1.addItem(2);
 
 	v1.print();
 
