@@ -49,8 +49,8 @@ void main()
 
 	v1.insertItem(0, 10);
 	v1.insertItem(1, 1);
-	v1.print();
-
+	v1.print();   
+	
 	//==============================MATRIX==============================
 	std::cout << "\nMatrix test" << std::endl;
 
@@ -67,4 +67,16 @@ void main()
 	std::cout << "Item with coordinates (2,2) is " << m1.at(2, 2) << std::endl;
 	std::cout << "There are " << m1.getRows() << " rows in this matrix" << std::endl;
 	std::cout << "There are " << m1.getCols() << " cols in this matrix" << std::endl;
+
+	++m1;
+	m1.print();
+
+	--m1;
+	m1.print();
+
+	m1++;
+	m1.print();
+
+	m1--;
+	m1.print();
 }

@@ -50,14 +50,77 @@ int Matrix::getCols() const
 
 Matrix& Matrix::operator++()
 {
+	for (int i = 0; i < x; i++)
+	{
+		for (int j = 0; j < y; j++)
+		{
+			*(*(array_ + i) + j) += 1;
+		}
+	}
 	return *this;
 }
 
 Matrix& Matrix::operator--()
 {
+	for (int i = 0; i < x; i++)
+	{
+		for (int j = 0; j < y; j++)
+		{
+			*(*(array_ + i) + j) -= 1;
+		}
+	}
 	return *this;
 }
 
+//Matrix Matrix::operator++(int)
+//{
+//	for (int i = 0; i < x; i++)
+//	{
+//		for (int j = 0; j < y; j++)
+//		{
+//			*(*(array_ + i) + j) += 1;
+//		}
+//	}
+//	return *this;
+//}
+//
+//Matrix Matrix::operator--(int)
+//{
+//	for (int i = 0; i < x; i++)
+//	{
+//		for (int j = 0; j < y; j++)
+//		{
+//			*(*(array_ + i) + j) -= 1;
+//		}
+//	}
+//	return *this;
+//}
+//
+//Matrix Matrix::operator++(int)
+//{
+//	Matrix Ttmp = *this;
+//	for (int i = 0; i < x; i++)
+//	{
+//		for (int j = 0; j < y; j++)
+//		{
+//			*(*(array_ + i) + j) += 1;
+//		}
+//	}
+//	return Ttmp;
+//}
+//
+//Matrix Matrix::operator--(int)
+//{
+//	Matrix Ttmp = *this;
+//	for (int i = 0; i < x; i++)
+//	{
+//		for (int j = 0; j < y; j++)
+//		{
+//			*(*(array_ + i) + j) -= 1;
+//		}
+//	}
+//	return Ttmp;
+//}
 //==================== other functions ====================
 
 void Matrix::print() const
