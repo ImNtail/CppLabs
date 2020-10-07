@@ -32,7 +32,9 @@ void main()
 	v1.print();
 
 	std::cout << "First item: " << v1.getItem(0) << std::endl;
+	std::cout << "Second item: " << v1[1] << std::endl;
 	std::cout << "Third item: " << v1.getItem(2) << std::endl;
+	std::cout << "Fourth item: " << v1[3] << std::endl;
 	std::cout << "Last item: " << v1.getItem(4) << std::endl;
 
 	v1.setItem(0, 10);
@@ -48,8 +50,8 @@ void main()
 	v1.insertItem(1, 1);
 	v1.print();
 
-	v1.~Vector();
-
 	//==============================MATRIX==============================
 	std::cout << std::endl;
+
+
 }
