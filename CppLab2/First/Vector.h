@@ -13,6 +13,7 @@ public:
 
 	void setItem(int index, int value);
 	int getItem(int index) const;
+	int size() const;
 	int& operator[] (const int index);
 
 	//==================== other functions ====================
