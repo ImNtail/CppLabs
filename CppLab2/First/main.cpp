@@ -21,6 +21,7 @@
 void main()
 {
 	//==============================VECTOR==============================
+	std::cout << "Vector test" << std::endl;
 	Vector v1;
 	v1.print();
 
@@ -51,7 +52,19 @@ void main()
 	v1.print();
 
 	//==============================MATRIX==============================
-	std::cout << std::endl;
+	std::cout << "\nMatrix test" << std::endl;
 
+	Matrix m1(5, 5);
+	m1.init(5);
+	m1.print();
 
+	m1.setAt(2, 2, 10);
+	m1.setAt(3, 5, 20);
+	m1.setAt(5, 3, 30);
+	m1.print();
+
+	std::cout << "Size of matrix is " << m1.size() << std::endl;
+	std::cout << "Item with coordinates (2,2) is " << m1.at(2, 2) << std::endl;
+	std::cout << "There are " << m1.getRows() << " rows in this matrix" << std::endl;
+	std::cout << "There are " << m1.getCols() << " cols in this matrix" << std::endl;
 }
