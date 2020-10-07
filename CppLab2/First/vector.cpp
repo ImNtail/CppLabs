@@ -21,8 +21,8 @@ Vector::Vector(int size)
 
 Vector::~Vector()
 {
-	std::cout << "Vector has deleted" << std::endl;
 	delete[] array_;
+	std::cout << "Vector has deleted" << std::endl;
 }
 
 //==================== setters / getters ====================
