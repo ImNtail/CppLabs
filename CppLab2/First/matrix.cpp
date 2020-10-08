@@ -6,17 +6,43 @@
 
 Matrix::Matrix(int rows, int cols)
 {
-	x = rows;
-	y = cols;
-	array_ = new int*[x];
-	for (int i = 0; i < x; i++)
-		array_[i] = new int[y];
+	x_ = rows;
+	y_ = cols;
+	array_ = new int*[x_];
+	for (int i = 0; i < x_; i++)
+		array_[i] = new int[y_];
 	std::cout << "Matrix has created" << std::endl;
+}
+
+Matrix::Matrix(const Matrix& m)
+{
+	x_ = m.x_;
+	y_ = m.y_;
+	for (int i = 0; i < x_; i++)
+	{
+		for (int j = 0; j < y_; j++)
+		{
+			*(*(array_ + i) + j) = *(*(m.array_ + i) + j);
+		}
+	}
+}
+
+Matrix& Matrix::operator=(Matrix m)
+{
+	swap(m);
+	return *this;
+}
+
+void Matrix::swap(Matrix m)
+{
+	std::swap(x_, m.x_);
+	std::swap(y_, m.y_);
+	std::swap(array_, m.array_);
 }
 
 Matrix::~Matrix()
 {
-	for (int i = 0; i < x; i++)
+	for (int i = 0; i < x_; i++)
 		delete[] array_[i];
 	std::cout << "Matrix has deleted" << std::endl;
 }
@@ -35,24 +61,24 @@ int Matrix::at(int x, int y) const
 
 int Matrix::size() const
 {
-	return x*y;
+	return x_*y_;
 }
 
 int Matrix::getRows() const
 {
-	return x;
+	return x_;
 }
 
 int Matrix::getCols() const
 {
-	return y;
+	return y_;
 }
 
 Matrix& Matrix::operator++()
 {
-	for (int i = 0; i < x; i++)
+	for (int i = 0; i < x_; i++)
 	{
-		for (int j = 0; j < y; j++)
+		for (int j = 0; j < y_; j++)
 		{
 			*(*(array_ + i) + j) += 1;
 		}
@@ -62,9 +88,9 @@ Matrix& Matrix::operator++()
 
 Matrix& Matrix::operator--()
 {
-	for (int i = 0; i < x; i++)
+	for (int i = 0; i < x_; i++)
 	{
-		for (int j = 0; j < y; j++)
+		for (int j = 0; j < y_; j++)
 		{
 			*(*(array_ + i) + j) -= 1;
 		}
@@ -72,63 +98,39 @@ Matrix& Matrix::operator--()
 	return *this;
 }
 
-//Matrix Matrix::operator++(int)
-//{
-//	for (int i = 0; i < x; i++)
-//	{
-//		for (int j = 0; j < y; j++)
-//		{
-//			*(*(array_ + i) + j) += 1;
-//		}
-//	}
-//	return *this;
-//}
-//
-//Matrix Matrix::operator--(int)
-//{
-//	for (int i = 0; i < x; i++)
-//	{
-//		for (int j = 0; j < y; j++)
-//		{
-//			*(*(array_ + i) + j) -= 1;
-//		}
-//	}
-//	return *this;
-//}
-//
-//Matrix Matrix::operator++(int)
-//{
-//	Matrix Ttmp = *this;
-//	for (int i = 0; i < x; i++)
-//	{
-//		for (int j = 0; j < y; j++)
-//		{
-//			*(*(array_ + i) + j) += 1;
-//		}
-//	}
-//	return Ttmp;
-//}
-//
-//Matrix Matrix::operator--(int)
-//{
-//	Matrix Ttmp = *this;
-//	for (int i = 0; i < x; i++)
-//	{
-//		for (int j = 0; j < y; j++)
-//		{
-//			*(*(array_ + i) + j) -= 1;
-//		}
-//	}
-//	return Ttmp;
-//}
+Matrix Matrix::operator++(int)
+{
+	Matrix Ttmp(*this);
+	for (int i = 0; i < x_; i++)
+	{
+		for (int j = 0; j < y_; j++)
+		{
+			*(*(array_ + i) + j) += 1;
+		}
+	}
+	return Ttmp;
+}
+
+Matrix Matrix::operator--(int)
+{
+	Matrix Ttmp(*this);
+	for (int i = 0; i < x_; i++)
+	{
+		for (int j = 0; j < y_; j++)
+		{
+			*(*(array_ + i) + j) -= 1;
+		}
+	}
+	return Ttmp;
+}
 //==================== other functions ====================
 
 void Matrix::print() const
 {
 	std::cout << "Array:" << std::endl;
-	for (int i = 0; i < x; i++)
+	for (int i = 0; i < x_; i++)
 	{
-		for (int j = 0; j < y; j++)
+		for (int j = 0; j < y_; j++)
 		{
 			std::cout << std::setw(8) << *(*(array_ + i) + j);
 		}
@@ -139,9 +141,9 @@ void Matrix::print() const
 
 void Matrix::init(int value)
 {
-	for (int i = 0; i < x; i++)
+	for (int i = 0; i < x_; i++)
 	{
-		for (int j = 0; j < y; j++)
+		for (int j = 0; j < y_; j++)
 		{
 			*(*(array_ + i) + j) = value;
 		}

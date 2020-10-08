@@ -6,6 +6,9 @@ public:
 	//==================== constructors / destructor ====================
 
 	Matrix(int rows, int cols);
+	Matrix(const Matrix& m);
+	Matrix& operator=(Matrix m);
+	void swap(Matrix m);
 	~Matrix();
 
 	//==================== setters / getters / incr / decr ====================
@@ -28,6 +31,6 @@ public:
 	//==================== variables ====================
 private:
 	int** array_;
-	int x;
-	int y;
+	int x_;
+	int y_;
 };
