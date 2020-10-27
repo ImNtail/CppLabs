@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include "Fraction.h"
 
 //==================== constructors / destructor ====================
@@ -72,9 +73,29 @@ void Fraction::print()
 	std::cout << a_ << " / " << b_ << std::endl;
 }
 
+std::ostream& operator<<(std::ostream& out, const Fraction& f)
+{
+	out << f.a_ << " / " << f.b_;
+	return out;
+}
+
 void Fraction::printAsFraction(double decimalFraction)
 {
+	int counter = 0;
+	double x = (double)(floor(decimalFraction * 100));
 	
+	int whole = decimalFraction, denominator = 1;
+	while (x != round(x))
+	{
+		x *= 10;
+		counter++;
+		denominator *= 10;
+	}
+	x = decimalFraction;
+	if (denominator == 1)
+		std::cout << whole << std::endl;
+	else
+		std::cout << whole << " whole and " << (x - whole) * denominator << " / " << denominator << std::endl;
 }
 
 void Fraction::printAsFraction(char* decimalFraction)

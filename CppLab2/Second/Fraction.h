@@ -23,6 +23,7 @@ public:
 	//==================== other functions ====================
 
 	void print();
+	friend std::ostream& operator<< (std::ostream& out, const Fraction& point);
 	static void printAsFraction(double decimalFraction);
 	static void printAsFraction(char* decimalFraction);
 	static int gcd(int a, int b);

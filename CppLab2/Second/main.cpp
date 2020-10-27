@@ -21,32 +21,32 @@
 void main()
 {
 	Fraction a = Fraction(5, 7);
-	std::cout << "A is "; a.print();
+	std::cout << "A is " << a << std::endl;
 
 	a.setA(355);
 	a.setB(555);
-	std::cout << "A is "; a.print();
+	std::cout << "A is " << a << std::endl;
 	std::cout << "Count of fractions: " << a.getCount() << std::endl;
 	std::cout << "Numerator of a is " << a.getA() << " and denominator of a is " << a.getB() << std::endl;
 
 	Fraction b = a;
-	std::cout << "B is "; b.print();
+	std::cout << "B is " << b << std::endl;
 	std::cout << "Count of fractions: " << a.getCount() << std::endl;
 
 	std::cout << "GCD of b is " << b.gcd(b.getA(), b.getB()) << std::endl;
 	b.reduce();
-	std::cout << "B is "; b.print();
+	std::cout << "B is " << b << std::endl;
 
 	a.setA(3); a.setB(15);
 	b.setA(4); b.setB(18);
 	a = a + b;
-	std::cout << "A is "; a.print();
+	std::cout << "A is " << a << std::endl;
 	a = a - b;
-	std::cout << "A is "; a.print();
+	std::cout << "A is " << a << std::endl;
 	a = a * b;
-	std::cout << "A is "; a.print();
+	std::cout << "A is " << a << std::endl;
 	a = a / b;
-	std::cout << "A is "; a.print();
-
-	
+	std::cout << "A is " << a << std::endl;
+	Fraction::printAsFraction(0.566);
+	//Fraction::printAsFraction("0.25");
 }
