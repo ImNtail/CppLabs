@@ -87,7 +87,7 @@ void Fraction::printAsFraction(double decimalFraction)
 	int length = str.size(), tens = 0, point = INT_MAX, lastNonZero = 0;
 	for (int i = 0; i < length; i++)
 	{
-		if (str[i] == '.')
+		if (str[i] == '.' || str[i] == ',')
 			point = i;
 		if (i > point && str[i] != '0')
 			lastNonZero = i;
@@ -108,7 +108,7 @@ void Fraction::printAsFraction(char* decimalFraction)
 	int length = strlen(decimalFraction), tens = 0, point = INT_MAX, lastNonZero = 0;
 	for (int i = 0; i < length; i++)
 	{
-		if (decimalFraction[i] == '.')
+		if (decimalFraction[i] == '.' || decimalFraction[i] == ',')
 			point = i;
 		if (i > point && decimalFraction[i] != '0')
 			lastNonZero = i;
