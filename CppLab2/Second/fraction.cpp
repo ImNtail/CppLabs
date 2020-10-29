@@ -122,7 +122,6 @@ void Fraction::printAsFraction(char* decimalFraction)
 	result.reduce();
 	result.print();
 	delete[] numerator;
-	delete[] decimalFraction;
 }
 
 int Fraction::gcd(int a, int b)
