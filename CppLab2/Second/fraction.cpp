@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <string>
 #include "Fraction.h"
 
 //==================== constructors / destructor ====================
@@ -35,6 +36,7 @@ void Fraction::swap(Fraction f)
 
 Fraction::~Fraction()
 {
+	cnt--;
 	std::cout << "Fraction has deleted" << std::endl;
 }
 
@@ -81,26 +83,46 @@ std::ostream& operator<<(std::ostream& out, const Fraction& f)
 
 void Fraction::printAsFraction(double decimalFraction)
 {
-	int counter = 0;
-	double x = (double)(floor(decimalFraction * 100));
-	
-	int whole = decimalFraction, denominator = 1;
-	while (x != round(x))
+	std::string str = std::to_string(decimalFraction);
+	int length = str.size(), tens = 0, point = INT_MAX, lastNonZero = 0;
+	for (int i = 0; i < length; i++)
 	{
-		x *= 10;
-		counter++;
-		denominator *= 10;
+		if (str[i] == '.')
+			point = i;
+		if (i > point && str[i] != '0')
+			lastNonZero = i;
 	}
-	x = decimalFraction;
-	if (denominator == 1)
-		std::cout << whole << std::endl;
-	else
-		std::cout << whole << " whole and " << (x - whole) * denominator << " / " << denominator << std::endl;
+	tens = lastNonZero - point;
+	char* numerator = new char[tens];
+	for (int i = point + 1, j = 0; i <= lastNonZero; i++, j++)
+		numerator[j] = str[i];
+	int denominator = pow(10, tens);
+	Fraction result = Fraction(atoi(numerator), denominator);
+	result.reduce();
+	result.print();
+	delete[] numerator;
 }
 
 void Fraction::printAsFraction(char* decimalFraction)
 {
-
+	int length = strlen(decimalFraction), tens = 0, point = INT_MAX, lastNonZero = 0;
+	for (int i = 0; i < length; i++)
+	{
+		if (decimalFraction[i] == '.')
+			point = i;
+		if (i > point && decimalFraction[i] != '0')
+			lastNonZero = i;
+	}
+	tens = lastNonZero - point;
+	char* numerator = new char[tens];
+	for (int i = point + 1, j = 0; i <= lastNonZero; i++, j++)
+		numerator[j] = decimalFraction[i];
+	int denominator = pow(10, tens);
+	Fraction result = Fraction(atoi(numerator), denominator);
+	result.reduce();
+	result.print();
+	delete[] numerator;
+	delete[] decimalFraction;
 }
 
 int Fraction::gcd(int a, int b)

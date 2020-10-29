@@ -47,6 +47,7 @@ void main()
 	std::cout << "A is " << a << std::endl;
 	a = a / b;
 	std::cout << "A is " << a << std::endl;
-	Fraction::printAsFraction(0.566);
-	//Fraction::printAsFraction("0.25");
+
+	Fraction::printAsFraction(0.43);
+	Fraction::printAsFraction("0.25");
 }
