@@ -1,8 +1,11 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include "Stadium.h"
 
 //==================== constructors / destructor ====================
+
+int Stadium::cnt = 0;
 
 Stadium::Stadium()
 {
@@ -11,6 +14,7 @@ Stadium::Stadium()
 	sectorsNum_ = NULL;
 	capacity_ = NULL;
 	attendance_ = NULL;
+	cnt++;
 }
 
 Stadium::Stadium(std::string address, std::string footballClub, int sectorsNum, int capacity, int attendance)
@@ -20,6 +24,7 @@ Stadium::Stadium(std::string address, std::string footballClub, int sectorsNum, 
 	sectorsNum_ = sectorsNum;
 	capacity_ = capacity;
 	attendance_ = attendance;
+	cnt++;
 }
 
 Stadium::Stadium(const Stadium& s)
@@ -29,6 +34,7 @@ Stadium::Stadium(const Stadium& s)
 	sectorsNum_ = s.sectorsNum_;
 	capacity_ = s.capacity_;
 	attendance_ = s.attendance_;
+	cnt++;
 }
 
 Stadium& Stadium::operator=(Stadium s)
@@ -49,6 +55,7 @@ void Stadium::swap(Stadium s)
 Stadium::~Stadium()
 {
 	std::cout << "Stadium has deleted" << std::endl;
+	cnt--;
 }
 
 //==================== setters / getters ====================
@@ -114,22 +121,66 @@ int Stadium::getAttendance() const
 
 //==================== other functions ====================
 
+void Stadium::print()
+{
+	std::cout << ".\nFootball club: " << footballClub_ << "Address of the 2nd stadium: " << address_ << ".\nSector nums: "
+		<< sectorsNum_ << ".\nCapacity: " << capacity_ << ".\nAttendance: " << attendance_ << std::endl;
+}
+
+std::string defaultPath(std::string name)
+{
+	std::string defaultLocation = __FILE__;
+	int pos = defaultLocation.find_last_of('\\');
+	if (pos != std::string::npos)
+		defaultLocation.erase(pos, std::numeric_limits<std::string::size_type>::max());
+	defaultLocation = defaultLocation + "\\" + name + ".txt";
+	return defaultLocation;
+}
+
 void Stadium::serialize()
 {
-
+	std::ofstream out;
+	out.open(defaultPath(footballClub_));
+	if (out.is_open())
+		out << "| " << footballClub_ << " | " << address_ << " | " << sectorsNum_ << " | " << capacity_ << " | " << attendance_ << " |\n";
+	out.close();
+	std::cout << "Stadium has written" << std::endl;
 }
 
 void Stadium::serialize(const std::string& filename)
 {
-
+	std::ofstream out;
+	out.open(defaultPath(filename));
+	if (out.is_open())
+		out << "| " << footballClub_ << " | " << address_ << " | " << sectorsNum_ << " | " << capacity_ << " | " << attendance_ << " |\n";
+	out.close();
+	std::cout << "Stadium has written" << std::endl;
 }
 
 void Stadium::deserialize()
 {
-
+	std::string line;
+	std::ifstream in(defaultPath(footballClub_));
+	if (in.is_open())
+	{
+		while (std::getline(in, line))
+		{
+			std::cout << line << std::endl;
+		}
+	}
+	in.close();
 }
 
 void Stadium::deserialize(const std::string& filename)
 {
-
+	std::string line;
+	std::ifstream in(defaultPath(filename));
+	if (in.is_open())
+	{
+		while (std::getline(in, line))
+		{
+			std::cout << line << std::endl;
+		}
+	}
+	in.close();
 }

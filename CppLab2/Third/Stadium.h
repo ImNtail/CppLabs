@@ -2,11 +2,12 @@
 
 class Stadium
 {
+	static int cnt;
 public:
 	//==================== constructors / destructor ====================
 	
 	Stadium();
-	Stadium(std::string address, std::string footballClub, int sectorsNum, int capacity, int attendance);
+	Stadium(std::string footballClub, std::string address,  int sectorsNum, int capacity, int attendance);
 	Stadium(const Stadium& s);
 	Stadium& operator=(Stadium s);
 	void swap(Stadium s);
@@ -14,7 +15,7 @@ public:
 
 	//==================== setters / getters ====================
 
-	void set(std::string address, std::string footballClub, int sectorsNum, int capacity, int attendance);
+	void set( std::string footballClub, std::string address, int sectorsNum, int capacity, int attendance);
 	void setAddress(std::string address);
 	void setClub(std::string footballClub);
 	void setSectorsNum(int sectorsNum);
@@ -28,6 +29,7 @@ public:
 
 	//==================== other functions ====================
 
+	void print();
 	void serialize();
 	void serialize(const std::string& filename);
 	void deserialize();
