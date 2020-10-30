@@ -2,8 +2,8 @@
 
 class Stadium
 {
+public:	
 	static int cnt;
-public:
 	//==================== constructors / destructor ====================
 	
 	Stadium();
@@ -19,13 +19,15 @@ public:
 	void setAddress(std::string address);
 	void setClub(std::string footballClub);
 	void setSectorsNum(int sectorsNum);
-	void setCapacity(int capacity);
-	void setAttendance(int attendance);
+	void setCapacity(float capacity);
+	void setAttendance(float attendance);
+	void setAvgPerc(float avgPerc);
 	std::string getAddress() const;
 	std::string getClub() const;
 	int getSectorsNum() const;
-	int getCapacity() const;
-	int getAttendance() const;
+	float getCapacity() const;
+	float getAttendance() const;
+	float getAvgPerc() const;
 
 	//==================== other functions ====================
 
@@ -39,5 +41,6 @@ public:
 private:
 	std::string address_;
 	std::string footballClub_;
-	int sectorsNum_, capacity_, attendance_;
+	int sectorsNum_;
+	float capacity_, attendance_, avgPerc_;
 };

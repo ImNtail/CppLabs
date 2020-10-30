@@ -17,7 +17,7 @@ Stadium::Stadium()
 	cnt++;
 }
 
-Stadium::Stadium(std::string address, std::string footballClub, int sectorsNum, int capacity, int attendance)
+Stadium::Stadium(std::string footballClub, std::string address, int sectorsNum, int capacity, int attendance)
 {
 	address_ = address;
 	footballClub_ = footballClub;
@@ -60,7 +60,7 @@ Stadium::~Stadium()
 
 //==================== setters / getters ====================
 
-void Stadium::set(std::string address, std::string footballClub, int sectorsNum, int capacity, int attendance)
+void Stadium::set(std::string footballClub, std::string address, int sectorsNum, int capacity, int attendance)
 {
 	address_ = address;
 	footballClub_ = footballClub;
@@ -84,14 +84,19 @@ void Stadium::setSectorsNum(int sectorsNum)
 	sectorsNum_ = sectorsNum;
 }
 
-void Stadium::setCapacity(int capacity)
+void Stadium::setCapacity(float capacity)
 {
 	capacity_ = capacity;
 }
 
-void Stadium::setAttendance(int attendance)
+void Stadium::setAttendance(float attendance)
 {
 	attendance_ = attendance;
+}
+
+void Stadium::setAvgPerc(float avgPerc)
+{
+	avgPerc_ = avgPerc;
 }
 
 std::string Stadium::getAddress() const
@@ -109,22 +114,27 @@ int Stadium::getSectorsNum() const
 	return sectorsNum_;
 }
 
-int Stadium::getCapacity() const
+float Stadium::getCapacity() const
 {
 	return capacity_;
 }
 
-int Stadium::getAttendance() const
+float Stadium::getAttendance() const
 {
 	return attendance_;
+}
+
+float Stadium::getAvgPerc() const
+{
+	return avgPerc_;
 }
 
 //==================== other functions ====================
 
 void Stadium::print()
 {
-	std::cout << ".\nFootball club: " << footballClub_ << "Address of the 2nd stadium: " << address_ << ".\nSector nums: "
-		<< sectorsNum_ << ".\nCapacity: " << capacity_ << ".\nAttendance: " << attendance_ << std::endl;
+	std::cout << "\nFootball club: " << footballClub_ << "\nAddress of the stadium: " << address_ << "\nSector nums: "
+	<< sectorsNum_ << "\nCapacity: " << capacity_ << "\nAttendance: " << attendance_ << std::endl;
 }
 
 std::string defaultPath(std::string name)
