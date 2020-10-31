@@ -15,12 +15,13 @@
 */
 
 #include <iostream>
+#include <iomanip>
 #include "Matrix.h"
 #include "Vector.h"
 
 void main()
 {
-	//==============================VECTOR==============================
+	//============================== VECTOR ==============================
 	std::cout << "Vector test" << std::endl;
 	Vector v1;
 	v1.print();
@@ -51,7 +52,7 @@ void main()
 	v1.insertItem(1, 1);
 	v1.print();   
 	
-	//==============================MATRIX==============================
+	//============================== MATRIX ==============================
 	std::cout << "\nMatrix test" << std::endl;
 
 	Matrix m1(5, 5);
@@ -74,9 +75,17 @@ void main()
 	--m1;
 	m1.print();
 
-	m1++;
-	m1.print();
+	//m1++;
+	//m1.print();
 
-	m1--;
-	m1.print();
+	//m1--;
+	//m1.print();
+
+	//============================== 2nd task of the 1st lab ==============================
+	Matrix arr2d(5, 5);
+	arr2d.initFact();
+	arr2d.print();
+	Vector* arr1d = arr2d.forTheTaskMethod();
+	arr1d->print();
+	arr1d->~Vector();
 }

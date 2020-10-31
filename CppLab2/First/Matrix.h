@@ -1,10 +1,12 @@
 #pragma once
+#include "Vector.h"
 
 class Matrix
 {
-public:
 	//==================== constructors / destructor ====================
-
+private:
+	Matrix(int** arr);
+public:
 	Matrix(int rows, int cols);
 	Matrix(const Matrix& m);
 	Matrix& operator=(Matrix m);
@@ -27,6 +29,8 @@ public:
 
 	void print() const;
 	void init(int value);
+	void initFact();
+	Vector* forTheTaskMethod();
 
 	//==================== variables ====================
 private:

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include "Vector.h"
 #include "Matrix.h"
 
 //==================== constructors / destructor ====================
@@ -100,7 +101,8 @@ Matrix& Matrix::operator--()
 
 Matrix Matrix::operator++(int)
 {
-	Matrix Ttmp(*this);
+	Matrix Ttmp(x_, y_);
+	Ttmp.array_ = array_;
 	for (int i = 0; i < x_; i++)
 	{
 		for (int j = 0; j < y_; j++)
@@ -113,7 +115,8 @@ Matrix Matrix::operator++(int)
 
 Matrix Matrix::operator--(int)
 {
-	Matrix Ttmp(*this);
+	Matrix Ttmp(x_, y_);
+	Ttmp.array_ = array_;
 	for (int i = 0; i < x_; i++)
 	{
 		for (int j = 0; j < y_; j++)
@@ -148,4 +151,41 @@ void Matrix::init(int value)
 			*(*(array_ + i) + j) = value;
 		}
 	}
+}
+
+int fact(int num)
+{
+	if (num == 0)
+		return 1;
+	else
+		return num * fact(num - 1);
+}
+
+void Matrix::initFact()
+{
+	for (int i = 0; i < x_; i++)
+	{
+		for (int j = 0; j < y_; j++)
+		{
+			*(*(array_ + i) + j) = fact(i) + fact(j);
+		}
+	}
+}
+
+Vector* Matrix::forTheTaskMethod()
+{
+	int rowsCnt = 1;
+	Vector* arr1d = new Vector();
+	for (int i = 0; i < x_; i++)
+	{
+		for (int j = 0; j < y_; j++)
+		{
+			if (rowsCnt % 2 == 0)
+			{
+				arr1d->addItem(*(*(array_ + i) + j));
+			}
+		}
+		rowsCnt++;
+	}
+	return arr1d;
 }
