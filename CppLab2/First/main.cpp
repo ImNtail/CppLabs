@@ -22,7 +22,7 @@
 void main()
 {
 	//============================== VECTOR ==============================
-	std::cout << "Vector test" << std::endl;
+	std::cout << "============================== Vector test ==============================" << std::endl;
 	Vector v1;
 	v1.print();
 
@@ -53,7 +53,7 @@ void main()
 	v1.print();   
 	
 	//============================== MATRIX ==============================
-	std::cout << "\nMatrix test" << std::endl;
+	std::cout << "\n============================== Matrix test ==============================" << std::endl;
 
 	Matrix m1(5, 5);
 	m1.init(5);
@@ -75,13 +75,14 @@ void main()
 	--m1;
 	m1.print();
 
-	//m1++;
-	//m1.print();
+	m1++;
+	m1.print();
 
-	//m1--;
-	//m1.print();
+	m1--;
+	m1.print();
 
 	//============================== 2nd task of the 1st lab ==============================
+	std::cout << "\n============================== The 2nd task of the 1st lab ==============================" << std::endl;
 	Matrix arr2d(5, 5);
 	arr2d.initFact();
 	arr2d.print();

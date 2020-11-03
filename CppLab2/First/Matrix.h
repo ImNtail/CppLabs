@@ -22,8 +22,8 @@ public:
 	int getCols() const;
 	Matrix& operator++ ();
 	Matrix& operator-- ();
-	Matrix operator++(int);
-	Matrix operator--(int);
+	void operator++(int);
+	void operator--(int);
 
 	//==================== other functions ====================
 

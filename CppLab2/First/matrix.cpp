@@ -81,7 +81,7 @@ Matrix& Matrix::operator++()
 	{
 		for (int j = 0; j < y_; j++)
 		{
-			*(*(array_ + i) + j) += 1;
+			++(*(*(array_ + i) + j));
 		}
 	}
 	return *this;
@@ -93,15 +93,13 @@ Matrix& Matrix::operator--()
 	{
 		for (int j = 0; j < y_; j++)
 		{
-			*(*(array_ + i) + j) -= 1;
+			--(*(*(array_ + i) + j));
 		}
 	}
 	return *this;
 }
-
-Matrix Matrix::operator++(int)
-{
-	Matrix Ttmp(x_, y_);
+/*
+Matrix Ttmp(x_, y_);
 	Ttmp.array_ = array_;
 	for (int i = 0; i < x_; i++)
 	{
@@ -111,20 +109,28 @@ Matrix Matrix::operator++(int)
 		}
 	}
 	return Ttmp;
-}
+*/
 
-Matrix Matrix::operator--(int)
+void Matrix::operator++(int)
 {
-	Matrix Ttmp(x_, y_);
-	Ttmp.array_ = array_;
 	for (int i = 0; i < x_; i++)
 	{
 		for (int j = 0; j < y_; j++)
 		{
-			*(*(array_ + i) + j) -= 1;
+			(*(*(array_ + i) + j))++;
 		}
 	}
-	return Ttmp;
+}
+
+void Matrix::operator--(int)
+{
+	for (int i = 0; i < x_; i++)
+	{
+		for (int j = 0; j < y_; j++)
+		{
+			(*(*(array_ + i) + j))--;
+		}
+	}
 }
 //==================== other functions ====================
 
