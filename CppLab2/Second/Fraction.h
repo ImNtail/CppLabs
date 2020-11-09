@@ -29,7 +29,6 @@ public:
 	static int gcd(int a, int b);
 	void reduce();
 
-
 	//==================== variables ====================
 private:
 	int a_, b_;

@@ -98,19 +98,8 @@ void main()
 	s3.setAvgPerc(avgPerc3);
 
 	//sorting avg percentages
-	float avgPercs[3] = { avgPerc1, avgPerc2, avgPerc3 };
-	for (int i = 0; i < sizeof(avgPercs) / sizeof(int) - 1; i++)
-	{
-		for (int j = 0; j < sizeof(avgPercs) / sizeof(int) - i - 1; j++)
-		{
-			if (avgPercs[j] < avgPercs[j + 1])
-			{
-				float temp = avgPercs[j];
-				avgPercs[j] = avgPercs[j + 1];
-				avgPercs[j + 1] = temp;
-			}
-		}
-	}
+	float* avgPercs = new float[3]{ avgPerc1, avgPerc2, avgPerc3 };
+	avgPercs = Stadium::avgPercsSort(avgPercs);
 
 	//output
 	for (int i = 0; i < Stadium::cnt; i++)

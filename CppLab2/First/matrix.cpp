@@ -45,6 +45,7 @@ Matrix::~Matrix()
 {
 	for (int i = 0; i < x_; i++)
 		delete[] array_[i];
+	delete[] array_;
 	std::cout << "Matrix has deleted" << std::endl;
 }
 
@@ -98,18 +99,6 @@ Matrix& Matrix::operator--()
 	}
 	return *this;
 }
-/*
-Matrix Ttmp(x_, y_);
-	Ttmp.array_ = array_;
-	for (int i = 0; i < x_; i++)
-	{
-		for (int j = 0; j < y_; j++)
-		{
-			*(*(array_ + i) + j) += 1;
-		}
-	}
-	return Ttmp;
-*/
 
 void Matrix::operator++(int)
 {
