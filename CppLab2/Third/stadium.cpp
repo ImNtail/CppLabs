@@ -195,15 +195,15 @@ void Stadium::deserialize(const std::string& filename)
 	in.close();
 }
 
-float* Stadium::avgPercsSort(float* arr)
+Stadium* Stadium::sort(Stadium* arr)
 {
 	for (int i = 0; i < sizeof(arr) / sizeof(int) - 1; i++)
 	{
 		for (int j = 0; j < sizeof(arr) / sizeof(int) - i - 1; j++)
 		{
-			if (arr[j] < arr[j + 1])
+			if (arr[j].getAvgPerc() < arr[j + 1].getAvgPerc())
 			{
-				float temp = arr[j];
+				Stadium temp = arr[j];
 				arr[j] = arr[j + 1];
 				arr[j + 1] = temp;
 			}

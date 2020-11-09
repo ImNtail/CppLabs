@@ -36,7 +36,7 @@ public:
 	void serialize(const std::string& filename);
 	void deserialize();
 	void deserialize(const std::string& filename);
-	static float* avgPercsSort(float* arr);
+	static Stadium* sort(Stadium* arr);
 
 	//==================== variables ====================
 private:

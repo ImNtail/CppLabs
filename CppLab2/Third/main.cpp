@@ -93,23 +93,24 @@ void main()
 	float avgPerc2 = (fillPercentage2_1 + fillPercentage2_2 + fillPercentage2_3 + fillPercentage2_4) / 4;
 	float avgPerc3 = (fillPercentage3_1 + fillPercentage3_2 + fillPercentage3_3 + fillPercentage3_4) / 4;
 
-	s1->setAvgPerc(avgPerc1);
-	s2->setAvgPerc(avgPerc2);
-	s3.setAvgPerc(avgPerc3);
+
+	std::cout << s1->getAvgPerc() << ", " << s2->getAvgPerc() << ", " << s3.getAvgPerc() << std::endl;
 
 	//sorting avg percentages
-	float* avgPercs = new float[3]{ avgPerc1, avgPerc2, avgPerc3 };
-	avgPercs = Stadium::avgPercsSort(avgPercs);
+	Stadium* arr = new Stadium[3];
+	arr[0] = *s1;
+	arr[1] = *s2;
+	arr[2] = s3;
 
-	//output
-	for (int i = 0; i < Stadium::cnt; i++)
+	arr[0].setAvgPerc(avgPerc1);
+	arr[1].setAvgPerc(avgPerc2);
+	arr[2].setAvgPerc(avgPerc3);
+
+	arr = Stadium::sort(arr);
+
+	for (int i = 0; i < 3; i++)
 	{
-		if (s1->getAvgPerc() == avgPercs[i])
-			s1->print();
-		else if (s2->getAvgPerc() == avgPercs[i])
-			s2->print();
-		else
-			s3.print();
+		arr[i].print();
 	}
 
 	s1->~Stadium();
