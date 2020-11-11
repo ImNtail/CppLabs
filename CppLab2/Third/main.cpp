@@ -103,9 +103,9 @@ void main()
 	arr[1] = s2;
 	arr[2] = &s3;
 
-	std::cout << s1->getAvgPerc() << ", " << s2->getAvgPerc() << ", " << s3.getAvgPerc() << std::endl;
-	std::cout << arr[0]->getAvgPerc() << ", " << arr[1]->getAvgPerc() << ", " << arr[2]->getAvgPerc() << std::endl;
-	std::cout << Stadium::cnt << std::endl;
+	s1->print();
+	s2->print();
+	s3.print();
 
 	Stadium::sort(arr, 3);
 
@@ -114,9 +114,9 @@ void main()
 		arr[i]->print();
 	}
 
-	std::cout << s1->getAvgPerc() << ", " << s2->getAvgPerc() << ", " << s3.getAvgPerc() << std::endl;
-	std::cout << arr[0]->getAvgPerc() << ", " << arr[1]->getAvgPerc() << ", " << arr[2]->getAvgPerc() << std::endl;
-	std::cout << Stadium::cnt << std::endl;
+	s1->print();
+	s2->print();
+	s3.print();
 
 	s1->~Stadium();
 	s2->~Stadium();

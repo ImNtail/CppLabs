@@ -209,9 +209,9 @@ void Stadium::sort(Stadium** arr, int size)
 			std::cout << arr[j]->getAvgPerc() << " --- " << arr[j + 1]->getAvgPerc() << std::endl;
 			if (arr[j]->getAvgPerc() < arr[j + 1]->getAvgPerc())
 			{
-				Stadium temp = *arr[j];
-				*arr[j] = *arr[j + 1];
-				*arr[j + 1] = temp;
+				Stadium* temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
 			}
 		}
 	}
