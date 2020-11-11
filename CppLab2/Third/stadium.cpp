@@ -138,7 +138,7 @@ float Stadium::getAvgPerc() const
 void Stadium::print()
 {
 	std::cout << "\nFootball club: " << footballClub_ << "\nAddress of the stadium: " << address_ << "\nSector nums: "
-		<< sectorsNum_ << "\nCapacity: " << capacity_ << "\nAttendance: " << attendance_ << "\nAvg percentage: " << avgPerc_ << std::endl;
+		<< sectorsNum_ << "\nCapacity: " << capacity_ << "\nAttendance: " << attendance_ << "\nAvg percentage: " << avgPerc_ << "\n" << std::endl;
 }
 
 std::string defaultPath(std::string name)
