@@ -14,6 +14,7 @@ Stadium::Stadium()
 	sectorsNum_ = NULL;
 	capacity_ = NULL;
 	attendance_ = NULL;
+	avgPerc_ = NULL;
 	cnt++;
 }
 
@@ -24,6 +25,7 @@ Stadium::Stadium(std::string footballClub, std::string address, int sectorsNum, 
 	sectorsNum_ = sectorsNum;
 	capacity_ = capacity;
 	attendance_ = attendance;
+	avgPerc_ = NULL;
 	cnt++;
 }
 
@@ -34,6 +36,7 @@ Stadium::Stadium(const Stadium& s)
 	sectorsNum_ = s.sectorsNum_;
 	capacity_ = s.capacity_;
 	attendance_ = s.attendance_;
+	avgPerc_ = s.avgPerc_;
 	cnt++;
 }
 
@@ -45,11 +48,12 @@ Stadium& Stadium::operator=(Stadium s)
 
 void Stadium::swap(Stadium s)
 {
-	std::swap(address_, s.address_);
-	std::swap(footballClub_, s.footballClub_);
-	std::swap(sectorsNum_, s.sectorsNum_);
-	std::swap(capacity_, s.capacity_);
-	std::swap(attendance_, s.attendance_);
+	address_ = s.address_;
+	footballClub_ = s.footballClub_;
+	sectorsNum_ = s.sectorsNum_;
+	capacity_ = s.capacity_;
+	attendance_ = s.attendance_;
+	avgPerc_ = s.avgPerc_;
 }
 
 Stadium::~Stadium()
@@ -209,5 +213,6 @@ Stadium* Stadium::sort(Stadium* arr)
 			}
 		}
 	}
+	std::cout << "Array has sorted" << std::endl;
 	return arr;
 }
