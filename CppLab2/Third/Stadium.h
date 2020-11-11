@@ -36,7 +36,7 @@ public:
 	void serialize(const std::string& filename);
 	void deserialize();
 	void deserialize(const std::string& filename);
-	static Stadium* sort(Stadium* arr);
+	static void sort(Stadium** arr, int size);
 
 	//==================== variables ====================
 private:

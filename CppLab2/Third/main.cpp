@@ -93,33 +93,30 @@ void main()
 	float avgPerc2 = (fillPercentage2_1 + fillPercentage2_2 + fillPercentage2_3 + fillPercentage2_4) / 4;
 	float avgPerc3 = (fillPercentage3_1 + fillPercentage3_2 + fillPercentage3_3 + fillPercentage3_4) / 4;
 
-
-	
-
 	s1->setAvgPerc(avgPerc1);
 	s2->setAvgPerc(avgPerc2);
 	s3.setAvgPerc(avgPerc3);
 
 	//sorting avg percentages
-	Stadium* arr = new Stadium[3];
-	arr[0] = *s1;
-	arr[1] = *s2;
-	arr[2] = s3;
-
-	//arr[0].setAvgPerc(avgPerc1);
-	//arr[1].setAvgPerc(avgPerc2);
-	//arr[2].setAvgPerc(avgPerc3);
+	Stadium* arr[3];
+	arr[0] = s1;
+	arr[1] = s2;
+	arr[2] = &s3;
 
 	std::cout << s1->getAvgPerc() << ", " << s2->getAvgPerc() << ", " << s3.getAvgPerc() << std::endl;
-	std::cout << arr[0].getAvgPerc() << ", " << arr[1].getAvgPerc() << ", " << arr[2].getAvgPerc() << std::endl;
+	std::cout << arr[0]->getAvgPerc() << ", " << arr[1]->getAvgPerc() << ", " << arr[2]->getAvgPerc() << std::endl;
 	std::cout << Stadium::cnt << std::endl;
 
-	arr = Stadium::sort(arr);
+	Stadium::sort(arr, 3);
 
 	for (int i = 0; i < 3; i++)
 	{
-		arr[i].print();
+		arr[i]->print();
 	}
+
+	std::cout << s1->getAvgPerc() << ", " << s2->getAvgPerc() << ", " << s3.getAvgPerc() << std::endl;
+	std::cout << arr[0]->getAvgPerc() << ", " << arr[1]->getAvgPerc() << ", " << arr[2]->getAvgPerc() << std::endl;
+	std::cout << Stadium::cnt << std::endl;
 
 	s1->~Stadium();
 	s2->~Stadium();

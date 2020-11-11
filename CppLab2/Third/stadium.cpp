@@ -48,12 +48,12 @@ Stadium& Stadium::operator=(Stadium s)
 
 void Stadium::swap(Stadium s)
 {
-	address_ = s.address_;
-	footballClub_ = s.footballClub_;
-	sectorsNum_ = s.sectorsNum_;
-	capacity_ = s.capacity_;
-	attendance_ = s.attendance_;
-	avgPerc_ = s.avgPerc_;
+	std::swap(address_, s.address_);
+	std::swap(footballClub_, s.footballClub_);
+	std::swap(sectorsNum_, s.sectorsNum_);
+	std::swap(capacity_, s.capacity_);
+	std::swap(attendance_, s.attendance_);
+	std::swap(avgPerc_, s.avgPerc_);
 }
 
 Stadium::~Stadium()
@@ -138,7 +138,7 @@ float Stadium::getAvgPerc() const
 void Stadium::print()
 {
 	std::cout << "\nFootball club: " << footballClub_ << "\nAddress of the stadium: " << address_ << "\nSector nums: "
-	<< sectorsNum_ << "\nCapacity: " << capacity_ << "\nAttendance: " << attendance_ << std::endl;
+		<< sectorsNum_ << "\nCapacity: " << capacity_ << "\nAttendance: " << attendance_ << "\nAvg percentage: " << avgPerc_ << std::endl;
 }
 
 std::string defaultPath(std::string name)
@@ -199,20 +199,19 @@ void Stadium::deserialize(const std::string& filename)
 	in.close();
 }
 
-Stadium* Stadium::sort(Stadium* arr)
+void Stadium::sort(Stadium** arr, int size)
 {
-	for (int i = 0; i < sizeof(arr) / sizeof(int) - 1; i++)
+	for (int i = 0; i < size - 1; i++)
 	{
-		for (int j = 0; j < sizeof(arr) / sizeof(int) - i - 1; j++)
+		for (int j = 0; j < size - i - 1; j++)
 		{
-			if (arr[j].getAvgPerc() < arr[j + 1].getAvgPerc())
+			std::cout << arr[j]->getAvgPerc() << " --- " << arr[j + 1]->getAvgPerc() << std::endl;
+			if (arr[j]->getAvgPerc() < arr[j + 1]->getAvgPerc())
 			{
-				Stadium temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
+				Stadium temp = *arr[j];
+				*arr[j] = *arr[j + 1];
+				*arr[j + 1] = temp;
 			}
 		}
 	}
-	std::cout << "Array has sorted" << std::endl;
-	return arr;
 }
