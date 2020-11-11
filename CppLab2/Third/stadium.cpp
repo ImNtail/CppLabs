@@ -156,7 +156,7 @@ void Stadium::serialize()
 	std::ofstream out;
 	out.open(defaultPath(footballClub_));
 	if (out.is_open())
-		out << "| " << footballClub_ << " | " << address_ << " | " << sectorsNum_ << " | " << capacity_ << " | " << attendance_ << " |\n";
+		out << "| " << footballClub_ << " | " << address_ << " | " << sectorsNum_ << " | " << capacity_ << " | " << attendance_ << " | " << avgPerc_ << " |\n";
 	out.close();
 	std::cout << "Stadium has written" << std::endl;
 }
@@ -166,7 +166,7 @@ void Stadium::serialize(const std::string& filename)
 	std::ofstream out;
 	out.open(defaultPath(filename));
 	if (out.is_open())
-		out << "| " << footballClub_ << " | " << address_ << " | " << sectorsNum_ << " | " << capacity_ << " | " << attendance_ << " |\n";
+		out << "| " << footballClub_ << " | " << address_ << " | " << sectorsNum_ << " | " << capacity_ << " | " << attendance_ << " | " << avgPerc_ << " |\n";
 	out.close();
 	std::cout << "Stadium has written" << std::endl;
 }
@@ -201,7 +201,7 @@ void Stadium::deserialize(const std::string& filename)
 
 void Stadium::sort(Stadium** arr, int size)
 {
-	std::cout << "Sortion:" << std::endl;
+	std::cout << "\nSortion:" << std::endl;
 	for (int i = 0; i < size - 1; i++)
 	{
 		for (int j = 0; j < size - i - 1; j++)
