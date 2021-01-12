@@ -4,12 +4,10 @@
 
 class Multiplier : public ExpressionEvaluator
 {
-    std::string name_ = "Multiplier";
 public:
-    Multiplier();
-    Multiplier(int n);
-    double calculate();
-    void logToScreen();
-    void logToFile(const std::string& filename);
-    std::string getName();
+	Multiplier();
+	Multiplier(int n);
+	double calculate() const override;
+	void logToScreen() const override;
+	void logToFile(const std::string& filename) const override;
 };

@@ -6,20 +6,20 @@ Summator::Summator() : ExpressionEvaluator() { }
 
 Summator::Summator(int n) : ExpressionEvaluator(n) { }
 
-double Summator::calculate()
+double Summator::calculate() const
 {
     double output = ops_[0];
-    for (int i = 1; i < n_; i++)
+    for (size_t i = 1; i < n_; i++)
         output += ops_[i];
     return output;
 }
 
-void Summator::logToScreen()
+void Summator::logToScreen() const
 {
-    for (int i = 0; i < n_; i++)
+    for (size_t i = 0; i < n_; i++)
         std::cout << "Op" << i + 1 << ", ";
     std::cout << ": ";
-    for (int i = 0; i < n_; i++)
+    for (size_t i = 0; i < n_; i++)
     {
         if (ops_[i] >= 0)
             std::cout << ops_[i] << " ";
@@ -30,31 +30,27 @@ void Summator::logToScreen()
         else
             std::cout << "+ ";
     }
-    std::cout << calculate() << std::endl;
+    std::cout << Summator::calculate() << std::endl;
 }
 
-void Summator::logToFile(const std::string& filename)
+void Summator::logToFile(const std::string& filename) const
 {
     std::ofstream file;
-    file.open(filename);
-    for (int i = 0; i < n_; i++)
+    file.open(filename + ".log", std::ios_base::app);
+    for (size_t i = 0; i < n_; i++)
         file << "Op" << i + 1 << ", ";
     file << ": ";
-    for (int i = 0; i < n_; i++)
+    for (size_t i = 0; i < n_; i++)
     {
         if (ops_[i] >= 0)
             file << ops_[i] << " ";
         else
-            std::cout << "(" << ops_[i] << ") ";
+            file << "(" << ops_[i] << ") ";
         if (i == n_ - 1)
             file << "\n-> ";
         else
             file << "+ ";
     }
-    file << calculate() << std::endl;
-}
-
-std::string Summator::getName()
-{
-    return name_;
+    file << Summator::calculate() << std::endl;
+    file.close();
 }
