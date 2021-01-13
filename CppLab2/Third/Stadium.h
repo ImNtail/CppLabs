@@ -15,7 +15,7 @@ public:
 
 	//==================== setters / getters ====================
 
-	void set( std::string footballClub, std::string address, int sectorsNum, int capacity, int attendance);
+	void set(std::string footballClub, std::string address, int sectorsNum, int capacity, int attendance);
 	void setAddress(std::string address);
 	void setClub(std::string footballClub);
 	void setSectorsNum(int sectorsNum);
